@@ -3,14 +3,28 @@ package hu.tb;
 import java.util.Scanner;
 import java.io.*;
 
-//TODO refactor to singleton
+//refactor to singleton
 public class Menu {
+
+	private static Menu INSTANCE;
 
 	private FileViewer fileViewer;
 
-	public Menu() {
+
+	private Menu(){
 		fileViewer = new FileViewer(new File("C:\\Users\\Admin\\Desktop\\resources"));
 	}
+
+	public static Menu getInstance(){
+		if(INSTANCE == null){
+			INSTANCE = new Menu();
+		}
+		return INSTANCE;
+	}
+
+	/*public Menu() {
+		fileViewer = new FileViewer(new File("C:\\Users\\Admin\\Desktop\\resources"));
+	}*/
 
 	//TODO Console-os menü megvalósítása
 	public void run() {
